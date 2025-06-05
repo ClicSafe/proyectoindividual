@@ -1,4 +1,4 @@
-const TMDB_API_KEY = '7a13dd88694aa595623e156322135617';
+const TMDB_API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
 
 // Género de películas

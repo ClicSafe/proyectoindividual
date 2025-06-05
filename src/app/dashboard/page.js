@@ -283,7 +283,7 @@ export default function Dashboard() {
       <header className="sticky top-0 z-10 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm">
         <div className="container mx-auto flex justify-between items-center p-4">
           <Link href="/" className="flex items-center gap-2">
-   
+           
             <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 text-transparent bg-clip-text">
               StoryRecs
             </span>

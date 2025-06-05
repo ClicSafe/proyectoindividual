@@ -5,26 +5,30 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyB42WAnMtTd_r8iDGxjMDxqv7HRPWHM4zY",
-  authDomain: "proyectoindividual-2c78e.firebaseapp.com",
-  projectId: "proyectoindividual-2c78e",
-  storageBucket: "proyectoindividual-2c78e.firebasestorage.app",
-  messagingSenderId: "239196645088",
-  appId: "1:239196645088:web:dcfeb63d0458d6acbc9285",
-  measurementId: "G-GDKXGM13RZ"
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-
-// Initialize Firebase services
-const auth = getAuth(app);
-const db = getFirestore(app);
-
-// Initialize Analytics only on the client side
+// Initialize Firebase only on client side with valid config
+let app = null;
+let auth = null;
+let db = null;
 let analytics = null;
-if (typeof window !== 'undefined') {
-  analytics = getAnalytics(app);
+
+if (typeof window !== 'undefined' && firebaseConfig.apiKey) {
+  try {
+    app = initializeApp(firebaseConfig);
+    auth = getAuth(app);
+    db = getFirestore(app);
+    analytics = getAnalytics(app);
+  } catch (error) {
+    console.error("Error initializing Firebase:", error);
+  }
 }
 
 export { app, auth, db, analytics };

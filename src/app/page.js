@@ -570,13 +570,7 @@ export default function Home() {
       <footer className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md py-8">
         <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0 flex items-center gap-2">
-            <Image
-              src="/next.svg"
-              alt="Logo"
-              width={30}
-              height={30}
-              className="dark:invert"
-            />
+        
             <span className="font-medium">StoryRecs</span>
           </div>
 
